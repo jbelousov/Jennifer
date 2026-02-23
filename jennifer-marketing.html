@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennifer | Growth & Performance Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f4;
+    --warm-white: #f5f1eb;
+    --sand: #e8e0d4;
+    --terracotta: #c4724a;
+    --deep: #2c2417;
+    --mid: #6b5c48;
+    --text: #3d3124;
+    --light-text: #8c7c6a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5rem;
+    background: rgba(250,248,244,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--deep);
+    letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--mid);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding-top: 80px;
+    display: grid;
+    grid-template-columns: 55% 45%;
+  }
+  .hero-left {
+    background: var(--warm-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    border-right: 1px solid var(--sand);
+  }
+  .eyebrow {
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.8rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--deep);
+    margin-bottom: 0.4rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--mid);
+    margin-bottom: 2.2rem;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--mid);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 440px;
+    margin-bottom: 2.8rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.7s forwards;
+  }
+  .btn-primary {
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #b3623b; transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid var(--sand);
+    color: var(--mid);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color 0.25s, color 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem;
+    gap: 2rem;
+  }
+  .stat-card { opacity: 0; animation: fadeUp 0.6s forwards; }
+  .stat-card:nth-child(1) { animation-delay: 0.5s; }
+  .stat-card:nth-child(2) { animation-delay: 0.65s; }
+  .stat-card:nth-child(3) { animation-delay: 0.8s; }
+  .stat-card:nth-child(4) { animation-delay: 0.95s; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.88rem; color: var(--mid); font-weight: 400; line-height: 1.4; }
+  .stat-divider { width: 40px; height: 1px; background: var(--sand); margin: 0.8rem 0; }
+
+  /* SECTION SHARED */
+  section { padding: 6rem 5rem; }
+  .section-label {
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--deep);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--light-text);
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* BRANDS */
+  .brands-section {
+    background: var(--deep);
+    padding: 3.5rem 5rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  .brands-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .brands-list { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: center; }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+    cursor: default;
+  }
+  .brand-name:hover { color: rgba(255,255,255,0.9); }
+
+  /* SERVICES */
+  .services-section { background: var(--cream); }
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--sand);
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 2.8rem 2.5rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--terracotta);
+    transition: width 0.4s ease;
+  }
+  .service-card:hover::before { width: 100%; }
+  .service-card:hover { background: var(--warm-white); }
+  .service-icon { font-size: 1.6rem; margin-bottom: 1.2rem; }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .service-desc { font-size: 0.9rem; color: var(--light-text); line-height: 1.7; font-weight: 300; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
+  .tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border: 1px solid rgba(196,114,74,0.3);
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* ABOUT */
+  .about-section {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    padding: 7rem 5rem;
+  }
+  .about-text p {
+    font-size: 1rem;
+    color: var(--mid);
+    font-weight: 300;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .certs-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--deep);
+    margin: 2rem 0 1rem;
+  }
+  .certs-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .cert-pill {
+    background: var(--sand);
+    color: var(--mid);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    font-weight: 400;
+  }
+  .about-highlights { display: flex; flex-direction: column; gap: 2rem; }
+  .highlight-item { border-left: 2px solid var(--terracotta); padding-left: 1.5rem; }
+  .highlight-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .highlight-text { font-size: 0.9rem; color: var(--mid); font-weight: 300; line-height: 1.5; margin-top: 0.3rem; }
+
+  /* EXPERIENCE */
+  .experience-section { background: var(--cream); }
+  .exp-grid { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date { font-size: 0.8rem; color: var(--terracotta); font-weight: 500; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  .exp-company { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--deep); }
+  .exp-location { font-size: 0.82rem; color: var(--light-text); }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 0.8rem;
+  }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-points li {
+    font-size: 0.9rem;
+    color: var(--mid);
+    font-weight: 300;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+    font-size: 0.8rem;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--deep);
+    padding: 7rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .contact-section .section-label { color: var(--terracotta); }
+  .contact-section .section-title { color: #fff; }
+  .contact-section .section-sub { color: rgba(255,255,255,0.5); margin-top: 1rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--terracotta); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-group select option { background: var(--deep); color: #fff; }
+  .btn-submit {
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-submit:hover { background: #b3623b; transform: translateY(-1px); }
+  #form-success { display:none; color: var(--terracotta); font-size:0.9rem; margin-top:0.5rem; }
+
+  /* FOOTER */
+  footer {
+    background: #1e180f;
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: rgba(255,255,255,0.4); }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.75rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 5rem 2rem 3rem; }
+    .hero-right { padding: 3rem 2rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+    .stat-card { flex: 1; min-width: 120px; }
+    section { padding: 4rem 2rem; }
+    .services-header { grid-template-columns: 1fr; gap: 1rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-section { grid-template-columns: 1fr; padding: 4rem 2rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-section { grid-template-columns: 1fr; padding: 4rem 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .brands-section { padding: 2.5rem 2rem; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Jennifer</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Work With Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Performance Marketing Consultant · New York, NY</p>
+    <h1 class="hero-name">I <em>scale</em><br>brands that<br>mean business.</h1>
+    <p class="hero-title">Growth & Performance Marketing Leader</p>
+    <p class="hero-desc">
+      With <strong>8+ years</strong> of hands-on experience, I help companies grow through data-driven, multi-channel marketing — turning ad spend into measurable revenue across <strong>QSR, travel, pharma, retail, and FMCG.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Let's Work Together</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card">
+      <div class="stat-number">$25MM+</div>
+      <div class="stat-label">Annual ad spend managed across Search, Social, Retail & Programmatic</div>
+      <div class="stat-divider"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8+</div>
+      <div class="stat-label">Years scaling performance campaigns across major industries</div>
+      <div class="stat-divider"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">+87%</div>
+      <div class="stat-label">YoY sales growth delivered through insight-led campaign strategy</div>
+      <div class="stat-divider"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10K+</div>
+      <div class="stat-label">Retail doors reached through national distribution strategy</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <span class="brands-label">Brands Scaled</span>
+  <div class="brands-list">
+    <span class="brand-name">LEGO</span>
+    <span class="brand-name">Carnival Cruise Line</span>
+    <span class="brand-name">Salesforce</span>
+    <span class="brand-name">IHOP</span>
+    <span class="brand-name">Amgen</span>
+    <span class="brand-name">Dave's Hot Chicken</span>
+    <span class="brand-name">Ulta Beauty</span>
+    <span class="brand-name">Nordstrom</span>
+    <span class="brand-name">CVS</span>
+    <span class="brand-name">Walmart</span>
+    <span class="brand-name">Target</span>
+    <span class="brand-name">TJ Maxx</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-label reveal">What I Do</p>
+      <h2 class="section-title reveal">Services built to<br><em>grow your brand</em></h2>
+    </div>
+    <p class="section-sub reveal">Whether you're a startup ready to acquire your first customers or an established brand looking to scale, I bring the strategy, execution, and tools to get you there — fast.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">📈</div>
+      <div class="service-name">Paid Media & Performance Marketing</div>
+      <p class="service-desc">Full-funnel paid media strategy across Search, Social, Retail Media, and Programmatic. I manage large budgets, optimize for CAC/ROAS, and build frameworks that drive qualified demand at scale. Proven managing $25MM+ annually.</p>
+      <div class="service-tags">
+        <span class="tag">Google Ads</span>
+        <span class="tag">Meta</span>
+        <span class="tag">Amazon</span>
+        <span class="tag">DV360</span>
+        <span class="tag">TikTok</span>
+        <span class="tag">Apple Search</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🤖</div>
+      <div class="service-name">AI-Driven Campaign Strategy</div>
+      <p class="service-desc">Leveraging AI tools like PMAX and AI Max to optimize targeting, automate bidding, and build scalable playbooks. I help brands stay ahead of the curve, reduce wasted spend, and increase returns without increasing headcount.</p>
+      <div class="service-tags">
+        <span class="tag">PMAX</span>
+        <span class="tag">AI Max</span>
+        <span class="tag">Automation</span>
+        <span class="tag">Optimization</span>
+        <span class="tag">Experimentation</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛍️</div>
+      <div class="service-name">Brand & Retail Media Growth</div>
+      <p class="service-desc">From launch to national distribution — I've scaled brands to 10,000+ retail doors. I develop retail media strategies, manage vendor relationships, and build cross-functional plans to grow your brand's presence online and in-store.</p>
+      <div class="service-tags">
+        <span class="tag">Shopper Marketing</span>
+        <span class="tag">Retail Media</span>
+        <span class="tag">D2C</span>
+        <span class="tag">Amazon</span>
+        <span class="tag">Shopify</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🧭</div>
+      <div class="service-name">Full-Funnel Growth Consulting</div>
+      <p class="service-desc">Strategic partnership at the CMO level — translating data into channel mix decisions, testing roadmaps, and investment recommendations that drive real business outcomes. I deliver QBRs, MMM analysis, and FY planning decks that tie media to revenue.</p>
+      <div class="service-tags">
+        <span class="tag">Strategy</span>
+        <span class="tag">MMM / Brand Lift</span>
+        <span class="tag">Reporting</span>
+        <span class="tag">FY Planning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-text">
+    <p class="section-label reveal">About Me</p>
+    <h2 class="section-title reveal">I don't just run campaigns —<br>I <em>build growth engines.</em></h2>
+    <div class="reveal">
+      <p>I'm a performance marketing leader who has spent 8+ years embedded inside some of the world's most recognizable brands, helping them scale from early traction to $25M+ in annual media investment.</p>
+      <p>My edge is the ability to move between <strong>high-level strategy and hands-on execution</strong> — whether that's architecting a multi-channel framework, running brand lift tests, or rolling up my sleeves to optimize a single campaign for maximum efficiency.</p>
+      <p>I've worked across QSR, travel, pharma, beauty, and FMCG — which means I understand that <strong>growth looks different for every business.</strong> My approach is always rooted in data, accountability, and a relentless focus on what actually moves the needle.</p>
+    </div>
+    <div class="reveal">
+      <p class="certs-title">Certifications</p>
+      <div class="certs-list">
+        <span class="cert-pill">Google Ads Search</span>
+        <span class="cert-pill">AI-Powered Performance Ads</span>
+        <span class="cert-pill">Meta Media Buying</span>
+        <span class="cert-pill">DV360</span>
+        <span class="cert-pill">SA360</span>
+        <span class="cert-pill">TikTok Academy</span>
+        <span class="cert-pill">Amazon Ads</span>
+        <span class="cert-pill">Apple Search Ads</span>
+        <span class="cert-pill">Adobe AMO & Analytics</span>
+        <span class="cert-pill">Matomo</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-highlights reveal">
+    <div class="highlight-item">
+      <div class="highlight-number">$25MM+</div>
+      <div class="highlight-text">In annual paid media managed across Search, Social, Retail & Programmatic channels</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-number">+87% YoY</div>
+      <div class="highlight-text">Sales growth delivered through consumer-driven campaign strategy and competitive analysis</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-number">10,000+ Doors</div>
+      <div class="highlight-text">National retail distribution built across CVS, Ulta, Target, TJ Maxx, Walmart & more</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-number">4 Brands</div>
+      <div class="highlight-text">Launched simultaneously with $1M+ in first-year sales each</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <p class="section-label reveal">Track Record</p>
+  <h2 class="section-title reveal">Where I've <em>delivered results</em></h2>
+  <div class="exp-grid">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Oct 2021 – Present</div>
+        <div class="exp-company">IPG</div>
+        <div class="exp-location">New York, NY</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Senior Manager, Performance Marketing</div>
+        <ul class="exp-points">
+          <li>Managed $25MM+/year across Search, Social, Retail Media, and Programmatic for brands including LEGO, Carnival Cruise Line, IHOP, Amgen, Dave's Hot Chicken, and Ulta</li>
+          <li>Primary SEM and Shopper strategy lead with a proven record of meeting client board-level goals</li>
+          <li>Designed and optimized performance frameworks across CPM/CPC/CAC, improving efficiencies at scale</li>
+          <li>Piloted AI-driven betas (AI Max, PMAX) and built playbooks adopted across all managed portfolios</li>
+          <li>Built LookerStudio/Power BI reporting and ran brand-lift/MMM tests to prove incremental budget value</li>
+          <li>Delivered QBRs and FY planning decks securing $5MM+ in fiscal budgets tied directly to business goals</li>
+          <li>Served as strategic growth partner to CMO-level stakeholders, shaping broader business strategy</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Aug 2017 – 2021</div>
+        <div class="exp-company">Symphony Beauty Box</div>
+        <div class="exp-location">New York, NY</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Marketing Manager / Sales Manager Assistant</div>
+        <ul class="exp-points">
+          <li>Drove +87% YoY sales growth (2020) through consumer and competitive analysis using Nielsen, IRI, Mintel, and SEMrush, paired with insight-led campaign development</li>
+          <li>Owned multi-channel digital across Amazon, Shopify, and paid social; optimized PPC/YouTube to expand brand reach</li>
+          <li>Managed 3 brands and launched 4 clean-beauty lines simultaneously, each achieving $1M+ in first-year sales</li>
+          <li>Developed pricing strategy to maximize profits, growing national distribution to 10,000+ retail doors</li>
+          <li>Handled vendor management across Ipsy, Boxycharm, Nordstrom, Ulta, TJ Maxx, CVS, Target, and Walmart</li>
+          <li>Led floor planning at CVS and Ulta (2018) for multiple brands across 15+ states</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div>
+    <p class="section-label">Ready to Scale?</p>
+    <h2 class="section-title">Let's build something <em>great</em> together.</h2>
+    <p class="section-sub">Whether you need a strategy partner, a campaign audit, or someone to run growth end-to-end — I'd love to hear about your brand and what you're trying to achieve.</p>
+  </div>
+  <form class="contact-form" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Jane Smith" required>
+      </div>
+      <div class="form-group">
+        <label>Company / Brand</label>
+        <input type="text" placeholder="Your Company" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="jane@company.com" required>
+    </div>
+    <div class="form-group">
+      <label>Service Interest</label>
+      <select>
+        <option value="">Select a service...</option>
+        <option>Paid Media & Performance Marketing</option>
+        <option>AI-Driven Campaign Strategy</option>
+        <option>Brand & Retail Media Growth</option>
+        <option>Full-Funnel Growth Consulting</option>
+        <option>Not sure yet — let's talk</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tell Me About Your Goals</label>
+      <textarea placeholder="A little about your brand, current challenges, and what you're hoping to achieve..."></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Send Message</button>
+    <div id="form-success">Thanks! I'll be in touch shortly.</div>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Jennifer</div>
+  <div class="footer-copy">© 2025 · Growth & Performance Marketing Consultant · New York, NY</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
