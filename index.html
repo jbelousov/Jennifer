@@ -393,7 +393,7 @@ footer{background:var(--deep);border-top:1px solid rgba(255,255,255,0.06);paddin
     </div>
     <div class="contact-detail" style="margin-top:0.4rem">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#c4724a"/></svg>
-      <span>jen.belousov@gmail.com</span>
+      <span>hello@jenniferbelousov.com</span>
     </div>
     <div style="margin-top:1.5rem">
       <button class="btn-primary" onclick="openSchedule()" style="font-size:0.82rem;">📅 &nbsp;Schedule a Free Call</button>
@@ -419,7 +419,7 @@ footer{background:var(--deep);border-top:1px solid rgba(255,255,255,0.06);paddin
     <div class="form-group"><label>What Are You Trying to Achieve?</label><textarea id="fmessage" placeholder="Tell me about your business and your biggest marketing challenge right now..."></textarea></div>
     <button type="button" class="btn-submit" id="submitBtn" onclick="sendEmail()">Send Message</button>
     <div id="form-success">✓ Sent! I'll be in touch within 24 hours.</div>
-    <div id="form-error">Something went wrong — please email jen.belousov@gmail.com directly.</div>
+    <div id="form-error">Something went wrong — please email hello@jenniferbelousov.com directly.</div>
   </form>
 </section>
 
@@ -532,7 +532,7 @@ async function submitSchedule() {
       document.getElementById('schedule-success').style.display = 'block';
     } else { throw new Error(); }
   } catch(e) {
-    alert('Something went wrong. Please email jen.belousov@gmail.com to schedule directly.');
+    alert('Something went wrong. Please email hello@jenniferbelousov.com to schedule directly.');
   }
 }
 
